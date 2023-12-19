@@ -20,12 +20,12 @@ impl InterraTcpClient {
         let ip = env::var("TCP_IP")
             .map_err(|_| io::Error::new(ErrorKind::Other, "TCP_IP not supplied in .env"))?;
         let port = env::var("PORT")
-            .map_err(|_| io::Error::new(ErrorKind::Other, "PORT not supplied .env"))?
+            .map_err(|_| io::Error::new(ErrorKind::Other, "PORT not supplied in .env"))?
             .parse::<u16>().map_err(|_| io::Error::new(ErrorKind::Other, "this is not a port"))?;
         let username = env::var("USERNAME")
-            .map_err(|_| io::Error::new(ErrorKind::Other, "USERNAME not supplied .env"))?;
+            .map_err(|_| io::Error::new(ErrorKind::Other, "USERNAME not supplied in .env"))?;
         let password = env::var("PASSWORD")
-            .map_err(|_| io::Error::new(ErrorKind::Other, "PASSWORD not supplied .env"))?;
+            .map_err(|_| io::Error::new(ErrorKind::Other, "PASSWORD not supplied in .env"))?;
 
         let (read, write) = TcpStream::connect((ip, port)).await?.into_split();
         // todo split is not task safe - into split is but alloc.
