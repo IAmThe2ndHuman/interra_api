@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+
+    <meta name="robots" content="noindex">
+
+    <style>
+        a {
+            color: red;
+        }
+
+        body {
+            color: red;
+            background-size: contain;
+            background-image: url("https://media.tenor.com/BkqctcUJejYAAAAC/bangin-awesome.gif");
+        }
+
+        #download {
+            padding: 10px;
+            color: white;
+        }
+
+        #download-ico {
+            visibility: hidden;
+        }
+
+        #overlative {
+            pointer-events: none;
+            opacity:0.5;
+            position: fixed;
+            width:20%;
+            height:70%;
+            bottom:0;
+            right:0;
+            z-index:1000;
+        }
+    </style>
+</head>
+<body>
+<img id="overlative" src="https://cdn.discordapp.com/attachments/726849326080327730/1124372001725886584/essedfsdef.png">
+<script>
+    const audio = new Audio("https://cdn.discordapp.com/attachments/726849326080327730/1124378352770355241/deltarune-explosion.mp3");
+
+    let lastKnownScrollPosition = 0;
+    let ticking = false;
+
+    const gato = document.getElementById("overlative");
+    const gatoSrc = gato.src;
+    let previousChanged = false;
+
+    const scrollMaxValue = () => {
+        const body = document.body;
+        const html = document.documentElement;
+
+        const documentHeight = Math.max(
+            body.scrollHeight,
+            body.offsetHeight,
+            html.clientHeight,
+            html.scrollHeight,
+            html.offsetHeight
+        );
+
+        const windowHeight = window.innerHeight;
+
+        return documentHeight - windowHeight;
+    };
+
+    document.addEventListener("scroll", () => {
+        lastKnownScrollPosition = window.scrollY;
+
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                const gatoWidth = 20 + Math.min((lastKnownScrollPosition / scrollMaxValue() * 80), 80);
+                gato.style.width = `${gatoWidth}%`;
+                console.log(gatoWidth, previousChanged);
+
+                if (gatoWidth >= 99) {
+                    if (!previousChanged) {
+                        audio.pause();
+                        audio.currentTime = 0;
+                        gato.src = "https://media.tenor.com/NpKEX5SFLUIAAAAi/cat-explosion.gif";
+                        audio.play();
+                        previousChanged = true;
+                    }
+                } else if (gato.src !== gatoSrc) {
+                    gato.src = gatoSrc;
+                    previousChanged = false;
+                }
+
+                ticking = false;
+            });
+
+            ticking = true;
+        }
+    })
+</script>
+
+<button id="download">Download RustScript by Clicking Here!</button>
+<img id="download-ico" src="https://deltarune.com/assets/images/coolgifs/music.gif" height="30">
+<img id="lugi" src="https://cdn.discordapp.com/attachments/726849326080327730/1125104259768254514/image.png"><br>
+<style>
+    #lugi {
+        height: 100px;
+        width: 100px;
+        visibility: hidden;
+        transform: rotate(90deg);
+        vertical-align: top;
+    }
+</style>
+<script>
+    const audio2 = new Audio("https://www.midis101.com/play-midi/66570-crazy-frog-axel.mp3");
+    audio2.playbackRate = 1.25;
+    audio2.loop = true;
+    const download = document.getElementById("download");
+
+    const luigi = document.getElementById("lugi");
+
+    let luigiAngle = 0;
+    let luigiBoogieAngle = 0;
+
+    setInterval(() => {
+        const hex = Math.floor(Math.random()*16777215).toString(16);
+        download.style.backgroundColor = `#${hex}`
+    }, 50);
+    setInterval(() => {
+        luigi.style.transform = `rotate(${luigiAngle}deg)`;
+        luigiAngle++;
+
+        luigi.style.width = `${(Math.sin(luigiBoogieAngle) * 5) + 100}px`;
+        luigiBoogieAngle += 0.25;
+    }, 25)
+    download.onclick = () => {
+        if (!audio2.paused) {
+            audio2.pause();
+            luigi.style.visibility = "hidden";
+
+            document.getElementById("download-ico").style.visibility = "hidden";
+        } else {
+            audio2.play();
+            luigi.style.visibility = "visible";
+            document.getElementById("download-ico").style.visibility = "visible";
+        }
+    }
+
+</script>
+
+<h1 style="margin: 0">/ iaamhuman presents</h1>
+<h5 style="margin: 0">with some html js css help from superchupu (THANKS!!!)</h5>
+<h2>WELCOME TO THE API FOR CONTROLLIUBG MY LIFE</h2>
+<img src="https://media.tenor.com/hnZRuZhgPSsAAAAd/cat-explosion.gif" style="height: 100px">
+<h2>How does it wor?????k</h2>
+Ok so basically it works like this<br>
+<img src="https://cdn.discordapp.com/attachments/781223827325583400/1124364414393516062/tutorial.png" height="400"><br>
+
+<div style="display: inline-block">
+    <img src="https://cdn.discordapp.com/attachments/726849326080327730/1125465443390460065/cooltext438764011268098.gif" width="1000"><br>
+    <img src="https://cdn.discordapp.com/attachments/726849326080327730/1125466485402382387/cooltext438764157905883.gif" width="1000"><br>
+    <img src="https://cdn.discordapp.com/attachments/726849326080327730/1125467364679495680/cooltext438764304898797.gif" width="1000">
+</div>
+<div style="display: inline-block;vertical-align: top">
+    <img src="https://media.discordapp.net/attachments/1004074693923455038/1013468411155722300/resize-1.gif" height="75" width="75"><br>
+    <img src="https://media.tenor.com/4mzWg4DyFLoAAAAd/this-is-a-sandwich.gif" height="75" width="75">
+</div><br>
+the token is not what you think it is
+
+<h2>Endpoints</h2>
+<ul>
+    <li>
+        <h3>GET /lights</h3>
+        gets all lights lik uhh gets the lights all of them<br>
+        example output:<br>
+        <code>
+            [
+            {
+            "id": "ceilingLights",
+            "active": false
+            },
+            {
+            "id": "shelfLight",
+            "active": false
+            }
+            ]
+        </code>
+    </li>
+    <li>
+        <h3>GET /lights/:id</h3>
+        gets any light you want simply specify id like this:<br>
+        <code>/lights/ceilingLights</code><br>
+        <code>/lights/shelfLight</code><br>
+        those are th only ones 😢...for now 😈😈😈<br>
+        uhh example output:<br>
+        <code>
+            {
+            "id": "ceilingLights",
+            "active": false
+            }
+        </code>
+    </li>
+    <li>
+        <h3>PATCH /lights/:id</h3>
+        sets any light you want simply specif the id like this.:::<br>
+        <code>/lights/ceilingLights</code><br>
+        <b>AND THEN....and also since this is patch requets you must supply a jason</b><br>
+        <b>---example:</b><br>
+        <code>{ "active": false }</code><br>
+        so uhh you might be wondering what it returns ??like wtf does bro return<br>
+        well bro i got an answer! example output:<br>
+        <code>
+            {
+            "id": "ceilingLights",
+            "active": false
+            }
+        </code><br>
+        yeh...bro just returns the light object just like <code>GET /lights/:id</code> kinda unoriginal
+    </li>
+</ul>
+<a href="https://rustscript.pages.dev/" target="_blank">
+    <img src="https://cdn.discordapp.com/attachments/726849326080327730/1124352435520016526/image.png" width="90"><br>
+    <marquee scrollamount="50"><h3><---- Works with RustScript!</h3></marquee>
+</a>
+
+<ul>
+    <li>
+        <h3>GET /ac</h3>
+        gets ac info about m room 😂😂😂😂😂😂<br>
+        example output:<br>
+        <code>
+            {
+            "roomTemp": 24.38,
+            "setTemp": 23,
+            "fanSpeed": 0,
+            "active": false
+            }
+        </code><br>
+        fanSpeed can be 0, 1, 2, or 3 (auto, slow, mid, high)!!!!!<br>
+        roomtemp is probably not inaccurate (MAYBE), i typically have just a vest on during the summe
+        /r so 25-24 degrees is pretty comfortable<br>
+        Do you like it?
+    </li>
+    <li>
+        <h3>PATCH /ac</h3>
+        this one is pretty minted im very proud of it<br>
+        ok so uhh..you gotta supplu a jason that can contain ANY of the following !!! depends on what you want to change::<br>
+        <code>
+            "setTemp" (INTEGE R BETWEEN 20 AND 25)!!!<br>
+            "fanSpeed" (INTEG ER THATS 0 1 2 OR 3 FOR AUTO SLOW MID HIGH......)<br>
+            "active" (BOOLEAN ####)
+        </code>
+        <h2>DONT EVEN THINK ABOUT USING ANYTHINBG ELSE for the FAN SPEED LIKE 4 OR 5 OR SOMETHING...IT WILL FAIL XDD</h2>
+        HERE IS ARE SOME EXAMPL!!! JSONS REQUESTS YOU CAN MAKE<br>
+        <code>{ "setTemp": 23, "active": true }</code> <--- THIS GUY SETS THE TEMP TO 23 AND TURNS THE AC ON<br>
+        <code>{ "setTemp": 24, "fanSpeed": 1 }</code> <--- THIS GUY SETS THE TEMP TO 24 AND FAN SPEED TO SLOW, DOESN'T TURN AC ON OR OFF<br>
+        <code>{ "fanSpeed": 0 }</code> <--- THIS GUY SETS THE FAN SPEED TO AUTO, DOESN'T DO ANYTHIG ELSE<br>
+        <code>{ }</code> <--- THIS GUY DOES FUCKALL<br>
+        <b>OH ALSO uhhhh,,,;;;İÜİ; the server is kinda silly like the interra system if i send all the requests at once
+            so i spaced out the request each json key makes
+            by 300ms...basically this patch request will take longer if you change more (BUT IT IS OK IT'S NOT THAT LONG)
+        </b><br>
+        as for what the server returns......................<br>
+        <code>
+            {
+            "roomTemp": 23.66,
+            "setTemp": 24,
+            "fanSpeed": 0,
+            "active": false
+            }
+        </code><br>
+        yeah bro just returns an ac object just like GET /ac
+    </li>
+    <li>
+        <h3>GET /restart</h3>
+        this guy restarts the tcp connection so if the api breaks request this in your browser or something<br>
+        also let me know so i can go check the logs
+    </li>
+</ul>
+<h1>
+    Thanks for watching!
+    <img src="https://media.tenor.com/bWUeVRqW9-IAAAAi/fast-cat-cat-excited.gif" height="100" style="vertical-align: middle;">
+    <img src="https://media.tenor.com/bWUeVRqW9-IAAAAi/fast-cat-cat-excited.gif" height="100" style="vertical-align: middle;">
+    <img src="https://media.tenor.com/bWUeVRqW9-IAAAAi/fast-cat-cat-excited.gif" height="100" style="vertical-align: middle;">
+    <img src="https://media.tenor.com/bWUeVRqW9-IAAAAi/fast-cat-cat-excited.gif" height="100" style="vertical-align: middle;">
+</h1>
+<span style="font-size: 100px">dont share this with anyone unless i let you..PLEASE!!! (not that they would be able to use it.....
+    unless you give them the token in which case kill youself 😂😂😂😂😂)</span><br>
+
+<img src="https://i.imgur.com/fncdhLi.png">
+<iframe src="https://gdbrowser.com/44491220" height="300" width="400"></iframe>
+<div id="gay">
+    <button id="download2">Download Geometry Dash Free!</button>
+</div>
+<script>
+    let id = 0;
+
+    const h = () => {
+        document.getElementById("gay").innerHTML += `<video id='sexy${id}' loop autoplay src='https://cdn.discordapp.com/attachments/726849326080327730/1125111155162095668/Geometry_Dash_Update_2.2_Sneak_Peek_Ipk7vq8gezw_Trim-1.mp4'></video>`;
+        const sexy = document.getElementById(`sexy${id}`);
+        id++;
+
+        sexy.volume = 0.3;
+
+        sexy.onclick = (event) => {
+            event.preventDefault();
+        }
+        sexy.oncontextmenu = (event) => {
+            event.preventDefault();
+        }
+        document.getElementById("download2").onclick = h;
+    };
+    document.getElementById("download2").onclick = h
+</script>
+
+<button onclick="window.open('https://scratch.mit.edu/projects/870315900/')">
+    Download Geometry Dash ISpyWithMyLittleEye by iPhone_ATT_TWC115 Free!
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Demon_Icon.png" height="30" style="vertical-align: middle">
+</button>
+<button onclick="window.open('https://store.steampowered.com/app/1674060/The_Search_For_Fran/')">Download Persona 7 Free!</button>
+
+<div style="height: 300px"></div>
+<style>
+    #container {
+        position: relative;
+    }
+    .box {
+        position: absolute;
+    }
+    .overlay {
+        margin: 10px;
+        z-index: 9;
+    }
+</style>
+<img src="https://cdn.discordapp.com/attachments/726849326080327730/1125119733306503339/image.png">
+<img src="https://cdn.discordapp.com/attachments/726849326080327730/1125119733306503339/image.png">
+<img src="https://cdn.discordapp.com/attachments/726849326080327730/1125119733306503339/image.png">
+<img src="https://cdn.discordapp.com/attachments/726849326080327730/1125119733306503339/image.png">
+<img src="https://cdn.discordapp.com/attachments/726849326080327730/1125119733306503339/image.png">
+<img src="https://cdn.discordapp.com/attachments/726849326080327730/1125119733306503339/image.png">
+
+<div id="container">
+    <img class="box" src="https://pbs.twimg.com/media/DuywR8-XQAEZKHo?format=jpg&name=4096x4096" height="600">
+    <div class="box overlay">
+        <button id="funny">click here to hear him speak 😊😊😊😊😊</button><br>
+        <h1>Do you agree with him? 🤔</h1>
+        <video id="funnySolutions" height="300" src="https://cdn.discordapp.com/attachments/726849326080327730/1124384568640802936/My_name_is_harry_the_hamster_QwU8j2_6IOI.mp4" loop></video>
+        <img src="https://media.tenor.com/hYD4kvlkk3cAAAAS/autechre-what-is-bro-saying.gif" height="300">
+    </div>
+
+    <style>
+        #funny {
+            background-color: pink;
+            font-size: 30px;
+            margin: 10px;
+        }
+    </style>
+    <script>
+        const mouseButton = document.getElementById("funny");
+        const mouseVideo = document.getElementById("funnySolutions");
+
+        mouseVideo.onclick = (event) => {
+            event.preventDefault();
+        }
+        mouseVideo.oncontextmenu = (event) => {
+            event.preventDefault();
+        }
+
+        mouseButton.onclick = () => {
+            mouseVideo.play();
+
+            mouseButton.onclick = () => null;
+            mouseButton.textContent = "YOU HAVE AWAKENED HIM 😡😡😡😡😡😡"
+        }
+    </script>
+</div>
+<div id="sex">
+    <h1>IAmAHuman presents...<br>Epic API</h1>
+    <video id="new" src="https://cdn.discordapp.com/attachments/701593186598125611/733115701044445194/video0.mp4"></video>
+</div>
+<script>
+    const sex = document.getElementById("sex");
+    const theNew = document.getElementById("new");
+
+    sex.onclick = () => {
+        sex.style.animation = "fade-out 2s forwards";
+
+        theNew.play();
+        theNew.style.visibility = "visible";
+
+        setTimeout(() => {
+            sex.remove();
+            document.body.style.overflow = "initial";
+        }, 2000)
+
+    }
+</script>
+<style>
+    body {
+        overflow: hidden;
+    }
+
+    @keyframes fade-out {
+        from {
+            opacity: 100%;
+        }
+        to {
+            opacity: 0;
+        }
+    }
+
+    #new {
+        visibility: hidden;
+        width: 100%;
+        height: 100%;
+    }
+
+    #sex {
+        background-color: black;
+        color: white;
+        opacity: 100%;
+
+        position:fixed;
+        padding:0;
+        margin:0;
+
+        top:0;
+        left:0;
+
+        width: 100%;
+        height: 100%;
+        z-index: 1000;
+    }
+</style>
+</body>
+</html>
