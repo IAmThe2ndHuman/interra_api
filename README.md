@@ -1,4 +1,4 @@
-REST api i made that connects to my smart home system and controls my bedroom lights and ac. i gave the endpoints to my friend who proceeded to make the goofiest and most immersive game ever. 10/10
+REST api i made that connects to my smart home system (interra technology, uses KNX) and controls my bedroom lights and ac. i gave the endpoints to my friend who proceeded to make the goofiest and most immersive game ever. 10/10
 ### environment variables
 ```
 AUTH_TOKEN: key necessary to include in auth header to use api
