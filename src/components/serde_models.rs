@@ -57,7 +57,7 @@ impl Light {
             "shelfLight" => Ok(146),
             _ => Err(CustomError::bad_request(
                 "blud really thought bro could jus put any ol \
-             id here 💀💀💀 i only accept ceilingLights n shelfLight u from ohio or what",
+             id here 💀💀💀 i only accept ceilingLights n shelfLight u ok or what",
             )),
         }
     }
